@@ -1,6 +1,6 @@
 {
   "name": "threejs-objects",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "three.js Object composition",
   "main": "src/index.js",
   "repository": "https://github.com/Kluddizz/threejs-objects",
