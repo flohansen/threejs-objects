@@ -1,17 +1,31 @@
 {
   "name": "threejs-objects",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "three.js Object composition",
-  "main": "src/index.js",
+  "main": "build/index.js",
+  "module": "build/index.module.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
   "repository": "https://github.com/Kluddizz/threejs-objects",
   "author": "Kluddizz",
   "license": "MIT",
   "private": false,
   "files": [
-    "src/objects/*.js",
-    "src/index.js"
+    "dist"
   ],
-  "dependencies": {
+  "peerDependencies": {
     "three": "^0.120.1"
+  },
+  "devDependencies": {
+    "@svgr/rollup": "^5.4.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "rollup": "^2.28.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-url": "^3.0.1"
   }
 }
