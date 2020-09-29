@@ -1,49 +1,6 @@
 import * as THREE from "three";
-
-const vertexShader = `
-precision highp float;
-uniform mat4 modelViewMatrix;
-uniform mat4 projectionMatrix;
-uniform float time;
-uniform float waveHeight;
-
-attribute vec3 position;
-attribute vec2 uv;
-attribute vec3 translate;
-attribute float scale;
-
-varying vec2 vUv;
-
-void main() {
-  vec3 trans = vec3(
-    0.0,
-    sin(time + translate.x * 5.0 + translate.z * 2.0) * waveHeight,
-    0.0
-  );
-
-  vec4 mvPosition = modelViewMatrix * vec4(translate + trans, 1.0);
-
-  mvPosition.xyz += position * scale;
-
-  vUv = uv;
-  gl_Position = projectionMatrix * mvPosition;
-}
-`;
-
-const fragmentShader = `
-precision highp float;
-
-uniform sampler2D map;
-
-varying vec2 vUv;
-
-void main() {
-  vec4 color = texture2D(map, vUv);
-  gl_FragColor = color;
-}
-`;
-
-const random = (min, max) => Math.random() * (max - min) + min;
+import { vertexShader, fragmentShader } from "../shaders/ParticleWaveShader";
+import { random } from "../utils/Random";
 
 class ParticleWave extends THREE.Mesh {
   constructor(options) {
