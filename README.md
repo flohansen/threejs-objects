@@ -46,8 +46,6 @@ scene.add(wave);
 | `waveHeight`      | number | `1.0`      | Amplitude of the wave |
 | `noise`           | number | `0.0`      | A value greater than `0` will add noise to the position of each particle |
 
-### ParticleImage
-
 #### Example
 
 ```js
@@ -63,6 +61,7 @@ const wave = new ParticleWave({
   <img src="./images/wave.png" width="250">
 </details>
 
+### ParticleImage
 
 #### Options
 
