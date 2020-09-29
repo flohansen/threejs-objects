@@ -3,9 +3,10 @@ precision highp float;
 
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
-uniform sampler2D image;
 uniform float time;
 uniform float amplitude;
+uniform sampler2D image;
+uniform vec3 color;
 
 attribute vec3 translate;
 attribute vec3 position;
@@ -24,7 +25,12 @@ void main() {
   mvPosition.xyz += position * gray * scale;
 
   vUv = uv;
+
+#ifdef USE_IMAGE_COLORS
   vColor = imageColor;
+#else
+  vColor = vec4(color.rgb, 1.0);
+#endif
 
   gl_Position = projectionMatrix * mvPosition;
 }

@@ -3,14 +3,14 @@ import { vertexShader, fragmentShader } from "../shaders/ParticleImageShader";
 
 export default class ParticleImage extends THREE.Mesh {
   constructor(options) {
+    const useImageColors = options?.useImageColors ?? false;
+    const color = options?.color ?? new THREE.Color(1.0, 1.0, 1.0);
     const amplitude = options?.amplitude ?? 0.05;
     const image = options?.image;
     const particleTexture = options?.particleTexture;
     const numberParticles = options?.numberParticles ?? 1000;
 
     const geometry = new THREE.InstancedBufferGeometry();
-    const geo = new THREE.PlaneBufferGeometry();
-    console.log(geo);
 
     // prettier-ignore
     const positions = new Float32Array([
@@ -51,8 +51,17 @@ export default class ParticleImage extends THREE.Mesh {
       new THREE.InstancedBufferAttribute(translates, 3)
     );
 
+    const applyVertexShader = () => {
+      if (useImageColors) {
+        return "#define USE_IMAGE_COLORS\n" + vertexShader;
+      }
+
+      return vertexShader;
+    };
+
     const material = new THREE.RawShaderMaterial({
       uniforms: {
+        color: { value: color },
         amplitude: { value: amplitude },
         time: { value: 0.0 },
         image: { value: new THREE.TextureLoader().load(image) },
@@ -60,7 +69,7 @@ export default class ParticleImage extends THREE.Mesh {
           value: new THREE.TextureLoader().load(particleTexture),
         },
       },
-      vertexShader: vertexShader,
+      vertexShader: applyVertexShader(),
       fragmentShader: fragmentShader,
       depthTest: true,
       depthWrite: true,
