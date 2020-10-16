@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { vertexShader, fragmentShader } from "../shaders/ParticleWaveShader";
 import { random } from "../utils/Random";
 
-class ParticleWave extends THREE.Mesh {
+export default class ParticleWave extends THREE.Mesh {
   constructor(options) {
     const particleSize = options?.particleSize ?? 0.025;
     const particleTexture = options?.particleTexture ?? "";
@@ -64,5 +64,3 @@ class ParticleWave extends THREE.Mesh {
     this.material.uniforms.time.value += dt;
   }
 }
-
-export default ParticleWave;
