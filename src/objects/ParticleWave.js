@@ -59,6 +59,10 @@ class ParticleWave extends THREE.Mesh {
 
     super(geometry, material);
   }
+
+  update(dt) {
+    this.material.uniforms.time.value += dt;
+  }
 }
 
 export default ParticleWave;
