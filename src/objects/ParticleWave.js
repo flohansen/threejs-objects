@@ -6,6 +6,7 @@ export default class ParticleWave extends THREE.Mesh {
   constructor(options) {
     const particleSize = options?.particleSize ?? 0.025;
     const particleTexture = options?.particleTexture ?? "";
+    const particleColor = options?.particleColor ?? 0xeeeeee;
     const waveHeight = options?.waveHeight ?? 1.0;
     const width = options?.numberParticles ? options.numberParticles[0] : 50;
     const height = options?.numberParticles ? options.numberParticles[1] : 50;
@@ -49,6 +50,7 @@ export default class ParticleWave extends THREE.Mesh {
         waveHeight: { value: waveHeight },
         map: { value: new THREE.TextureLoader().load(particleTexture) },
         time: { value: 0.0 },
+        particleColor: { value: new THREE.Color(particleColor) },
       },
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
