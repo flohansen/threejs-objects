@@ -1,6 +1,6 @@
 {
   "name": "threejs-objects",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "three.js Object composition",
   "main": "build/index.js",
   "module": "build/index.module.js",
