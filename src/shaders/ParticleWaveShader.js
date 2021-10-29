@@ -33,12 +33,12 @@ export const fragmentShader = `
 precision highp float;
 
 uniform sampler2D map;
-uniform vec4 particleColor;
+uniform vec3 particleColor;
 
 varying vec2 vUv;
 
 void main() {
-  vec4 color = particleColor * texture2D(map, vUv);
+  vec4 color = vec4(particleColor, 1.0) * texture2D(map, vUv);
   gl_FragColor = color;
 }
 `;
