@@ -31,7 +31,13 @@ export default class ParticleWave extends THREE.Mesh {
         translateArray[index * 3 + 1] = 0.0;
         translateArray[index * 3 + 2] = (1.0 / height) * i - 0.5 + randz;
 
-        sizeArray[index] = random(-particleSize, particleSize);
+        if (particleSize instanceof Array && particleSize.length === 2) {
+          sizeArray[index] = random(particleSize[0], particleSize[1]);
+        } else if (typeof particleSize === 'number') {
+          sizeArray[index] = particleSize;
+        } else {
+          sizeArray[index] = 1.0;
+        }
       }
     }
 

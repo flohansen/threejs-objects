@@ -32,6 +32,26 @@ const wave = new ParticleWave(options);
 scene.add(wave);
 ```
 
+## Development
+
+First, fork and clone the project
+
+```
+git clone https://github.com/<your-github-name>/threejs-objects
+```
+
+Install the dependencies
+
+```
+npm install
+```
+
+Build the project
+
+```
+npx rollup -c
+```
+
 ## Reference
 
 ### ParticleWave
@@ -41,10 +61,11 @@ scene.add(wave);
 | Parameter | Type | Default | Description |
 |:----------|:-----|:--------|:------------|
 | `numberParticles` | array  | `[50, 50]` | Amount of particles in x and y direction |
-| `particleSize`    | number | `0.025`    | The size of a particle will be between 0 and `particleSize` |
+| `particleSize`    | number | Array | `0.025`    | The size of a particle. Could be either a number or an interval to choose a random size per particle. |
 | `particleTexture` | string |            | Path to the texture of the particles |
 | `waveHeight`      | number | `1.0`      | Amplitude of the wave |
 | `noise`           | number | `0.0`      | A value greater than `0` will add noise to the position of each particle |
+| `particleColor`   | number | `0xeeeeee` | The color of each particle |
 
 #### Example
 
