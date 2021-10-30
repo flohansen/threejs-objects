@@ -73,6 +73,7 @@ export default class ParticleImage extends THREE.Mesh {
       fragmentShader: fragmentShader,
       depthTest: true,
       depthWrite: true,
+      blending: THREE.AdditiveBlending,
     });
 
     super(geometry, material);
